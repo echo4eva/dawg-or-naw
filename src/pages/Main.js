@@ -18,7 +18,7 @@ export default function Main() {
 
     function handleGetTest(e) {
         axios
-            .get("http://localhost:8080/api/testget")
+            .get(process.env.NEXT_PUBLIC_URL + "/api/testget")
             .then((response) => {
                 console.log(response.data)
             })
@@ -38,7 +38,7 @@ export default function Main() {
     function handleGradioTest(e) {
         e.preventDefault()
         axios
-            .post("http://localhost:8080/api/gradiotest", {
+            .post("http://localhost:5000/api/gradiotest", {
                 input: {description}
             })
             .then((response) => {
