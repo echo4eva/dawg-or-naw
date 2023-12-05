@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import axios from "axios";
+import { headers } from "../../next.config";
 
 export default function Main() {
 
@@ -18,7 +19,11 @@ export default function Main() {
 
     function handleGetTest(e) {
         axios
-            .get(process.env.NEXT_PUBLIC_URL + "/api/testget")
+            .get(process.env.NEXT_PUBLIC_URL + "/api/testget", {
+                headers: {
+                    "Access-Control-Allow-Origin" : "*"
+                }
+            })
             .then((response) => {
                 console.log(response.data)
             })
