@@ -1,8 +1,10 @@
 ## About
 
-This classification app determines if a user inputted image is a dog or a cat.
+This classification app determines if a user inputted image is a dog or a cat. My first deep learning application!
 
 The classification model I used is hosted on [Hugging Face](https://huggingface.co/spaces/echo4eva/minimal). I used the Gradio API to access it and display it on the frontend of this app.
+
+Don't bother going to the Vercel link the API doesn't work through there. I made this little tutorial if you want this working on your machine! Feel free to visit the Hugging Face Space if you just wanna run it through there without doing all this stuff.
 
 ![Screenshot 2023-12-05 182937](https://github.com/echo4eva/dawg-or-naw/assets/69120418/90cecd1a-a940-4903-be02-796e76873d7b)
 
