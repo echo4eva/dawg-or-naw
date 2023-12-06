@@ -4,6 +4,8 @@ This classification app determines if a user inputted image is a dog or a cat.
 
 The classification model I used is hosted on [Hugging Face](https://huggingface.co/spaces/echo4eva/minimal). I used the Gradio API to access it and display it on the frontend of this app.
 
+![Screenshot 2023-12-05 182937](https://github.com/echo4eva/dawg-or-naw/assets/69120418/90cecd1a-a940-4903-be02-796e76873d7b)
+
 ## Setup
 
 ******JavaScript****** dependencies:
