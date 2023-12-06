@@ -9,7 +9,7 @@ export default function Main() {
     const [userImage, setUserImage] = useState(null);
     const [display, setDisplay] = useState();
     const [description, setDescription] = useState("testing 123");
-    const [label, setLabel] = useState("");
+    const [label, setLabel] = useState("<insert here result lol>");
 
     function handleImageChange(e) {
         console.log(e.target.files)
@@ -32,7 +32,7 @@ export default function Main() {
     function handlePostTest(e) {
         e.preventDefault()
         axios
-            .post("http://localhost:8080/api/testpost", {
+            .post(process.env.NEXT_PUBLIC_URL + "/api/testpost", {
                 input: {description}
             })
             .then((response) => {
@@ -43,7 +43,7 @@ export default function Main() {
     function handleGradioTest(e) {
         e.preventDefault()
         axios
-            .post("http://localhost:5000/api/gradiotest", {
+            .post(process.env.NEXT_PUBLIC_URL + "/api/gradiotest", {
                 input: {description}
             })
             .then((response) => {
@@ -58,7 +58,7 @@ export default function Main() {
         formData.append("file", userImage)
 
         axios
-            .post("http://localhost:8080/api/gradio", formData, {
+            .post(process.env.NEXT_PUBLIC_URL + "/api/gradio", formData, {
                 headers: {
                     "Access-Control-Allow-Origin" : "*",
                     "Content-Type": "multipart/form-data"
@@ -72,21 +72,24 @@ export default function Main() {
 
     return (
         <main className="flex min-h-screen flex-col items-center justify-center">
-            <p>helloge everyone!</p>
+            <p className="text-2xl">welcome to dawg or naw</p>
             <p>its a</p>
             <p>{label}</p>
-            <img src={display} />
-            <form>
-                <input 
+            <img className="my-5 w-[300px] h-[300px] object-contain"src={display}  />
+            <form className="flex flex-col">
+                <input
+                    className="ml-[100px] p-2"
                     type="file" 
                     name="image" 
                     onChange={handleImageChange} 
                 />
-                <button type="submit" onClick={handleForm}>sendge</button>
+                <button className="border mx-[168px] bg-white drop-shadow-lg active:bg-slate-100" type="submit" onClick={handleForm}>submit</button>
             </form>
-            <button onClick={handleGetTest}>testGet</button>
-            <button onClick={handlePostTest}>testPost</button>
-            <button onClick={handleGradioTest}>testGradio</button>
+            <div className="flex flex-col space-y-1 pt-1">
+                <button className="border bg-white p-0.5 mx-[89px] drop-shadow-lg active:bg-slate-100" onClick={handleGetTest}>testGet</button>
+                <button className="border bg-white p-0.5 mx-[89px] drop-shadow-lg active:bg-slate-100" onClick={handlePostTest}>testPost</button>
+                <button className="border bg-white p-0.5 mx-[89px] drop-shadow-lg active:bg-slate-100" onClick={handleGradioTest}>testGradio</button>
+            </div>
         </main>
     )
 }

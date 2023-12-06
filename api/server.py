@@ -8,6 +8,10 @@ client = Client("https://echo4eva-minimal.hf.space/--replicas/prg82/")
 app = Flask(__name__)
 CORS(app)
 
+@app.route("/api/test")
+def hello_worldge2():
+    return "<p>Hello World</p>"
+
 @app.route("/api/testget", methods=["GET"])
 def hello_worldge():
     return jsonify({
@@ -48,4 +52,4 @@ def input_image():
         return result
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True, port=8080)
