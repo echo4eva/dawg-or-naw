@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## About
 
-## Getting Started
+This classification app determines if a user inputted image is a dog or a cat.
 
-First, run the development server:
+The classification model I used is hosted on [Hugging Face](https://huggingface.co/spaces/echo4eva/minimal). I used the Gradio API to access it and display it on the frontend of this app.
+
+## Setup
+
+******JavaScript****** dependencies:
+
+- `axios` for frontend to communicate with backend, that’s about it
+
+Just run this to install all dependencies once in root folder.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+You should also setup a `.env.local` file that takes in the `NEXT_PUBLIC_URL`. Place that in the file in the root and set the key's value to `http://localhost:<port of flask server>` (make sure there's no leading slash). I only did this to deploy to Vercel, but Vercel sucks, doesn't allow backend like this.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**********************Python********************** dependencies:
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+First make sure to create a python virtual environment. Then activate the environement before installing dependencies.
 
-## Learn More
+- `gradio_client` to interact with gradio
+- `flask` for our backend to communicate with the gradio api
+- `flask_cors` for CORS, [this is a great answer for what that is](https://stackoverflow.com/a/64137023)
 
-To learn more about Next.js, take a look at the following resources:
+Just run this to install all dependencies, should get info from the Pipfile once in root folder. I haven’t tested it, if it doesn’t work just install manually.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pipenv install
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+**How to Run**
 
-## Deploy on Vercel
+Then once you're done, run the `server.py` file and do `npm run dev`. That's it, happy whatever you'll be doing with this app.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Possible Issues
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+In `api\server.py` I’m not sure if the `Client` needs a token or not. I’m running it on my own machine which is registered with Hugging Face through SSH. If it doesn’t work for you, that’s probably why. [Here’s some documentation about it](https://www.gradio.app/guides/getting-started-with-the-python-client#connecting-to-a-hugging-face-space). If that’s not the issue, then go figure it out for yourself. Duplicate the space, make your own space and model, I don’t know.
